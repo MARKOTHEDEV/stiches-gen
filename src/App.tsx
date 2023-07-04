@@ -8,11 +8,9 @@ function App() {
     if(!code){
       return
     }
-    let key;
-    let value; 
 
   const listOfObjects  = code.split(';').map((eachStyleCompCode=>{
-        [key,value] = eachStyleCompCode.replace("\n",'').split(':')
+        let [key,value] = eachStyleCompCode.replace("\n",'').split(':')
         key = key?.replace(/\s+/g, ' ').trim()??''
         value =value?.replace(/\s+/g, ' ').trim()??''
         return {[key]:value}
@@ -22,7 +20,7 @@ function App() {
       return { ...result, ...currentObject };
     }, {} );
 
-    stiches = Object.fromEntries( Object.entries(stiches).filter(([key, value]) => value !== '' && value !== null && value !== undefined))
+    stiches = Object.fromEntries( Object.entries(stiches).filter(([ value]) => value !== '' && value !== null && value !== undefined))
 
     setCode(JSON.stringify(stiches))
   }
@@ -81,7 +79,7 @@ function App() {
         </Button>
       </Box>
 
-        <p>
+        <p style={{'padding':'1rem','textAlign':'left'}}>
         "Crafted with love and mischief by <a target="_blank" href="https://www.linkedin.com/in/markothedev/"><span><strong>markothedev</strong></span></a>, the master of code wizardry, who fervently preaches the art of <a target="_blank" href="https://stitches.dev/"><span><strong>stitching</strong></span></a> together digital wonders!"
         </p>
     </Box>
